@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ride Zone</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b0b0b;
+    color: #f5f5f5;
+  }
+  header {
+    background: linear-gradient(135deg, #111, #222);
+    padding: 18px 6%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 2px solid #333;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .logo {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 1px;
+  }
+  .logo span { color: #ff6a00; }
+  nav a {
+    color: #ddd;
+    text-decoration: none;
+    margin-left: 16px;
+    font-weight: 700;
+  }
+  nav a:hover { color: #ff6a00; }
+  .hero {
+    min-height: 72vh;
+    display: flex;
+    align-items: center;
+    padding: 70px 6%;
+    background:
+      linear-gradient(rgba(0,0,0,.62), rgba(0,0,0,.82)),
+      radial-gradient(circle at 75% 30%, #ff6a00 0, transparent 24%),
+      linear-gradient(135deg, #151515, #050505);
+  }
+  .hero-content { max-width: 720px; }
+  .tag {
+    color: #ff6a00;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  h1 {
+    font-size: clamp(48px, 9vw, 96px);
+    line-height: .9;
+    margin: 15px 0;
+  }
+  .hero p {
+    font-size: 20px;
+    color: #ccc;
+    max-width: 600px;
+  }
+  .btn {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 14px 22px;
+    background: #ff6a00;
+    color: #111;
+    text-decoration: none;
+    font-weight: 900;
+    border-radius: 8px;
+  }
+  section { padding: 60px 6%; }
+  .section-title {
+    font-size: 36px;
+    margin: 0 0 10px;
+  }
+  .section-subtitle {
+    color: #aaa;
+    margin-bottom: 30px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background: #171717;
+    border: 1px solid #2b2b2b;
+    border-radius: 14px;
+    padding: 24px;
+    transition: transform .2s, border-color .2s;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    border-color: #ff6a00;
+  }
+  .icon { font-size: 42px; }
+  .card h3 { margin: 14px 0 8px; }
+  .card p { color: #aaa; line-height: 1.5; }
+  .clips {
+    background: #111;
+  }
+  .clip {
+    padding: 0;
+    overflow: hidden;
+  }
+  .clip-thumb {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 52px;
+    background: linear-gradient(135deg, #252525, #101010);
+  }
+  .clip-info { padding: 18px; }
+  .clip-info h3 { margin-top: 0; }
+
+  .spot-photo {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    background: #252525;
+  }
+  .spot { border-left: 5px solid #ff6a00; }
+  .shop { border-left: 5px solid #00aaff; }
+  .upload {
+    text-align: center;
+    background: linear-gradient(135deg, #171717, #0e0e0e);
+  }
+  .upload-box {
+    max-width: 650px;
+    margin: 25px auto 0;
+    padding: 35px;
+    border: 2px dashed #555;
+    border-radius: 14px;
+  }
+  footer {
+    padding: 30px 6%;
+    background: #050505;
+    color: #777;
+    text-align: center;
+  }
+  @media (max-width: 650px) {
+    nav a { margin-left: 8px; font-size: 14px; }
+    .hero { min-height: 65vh; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">RIDE <span>ZONE</span></div>
+    <div>
+      <a href="#spots">Ride Spots</a>
+      <a href="#shops">Shops</a>
+      <a href="#clips">Clips</a>
+      <a href="#upload">Upload</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="tag">BMX • Dirt Bikes • Riders</div>
+      <h1>FIND YOUR RIDE.</h1>
+      <p>Discover places to ride, check out bike shops, and watch BMX and dirt-bike clips from riders.</p>
+      <a class="btn" href="#spots">EXPLORE RIDE SPOTS</a>
+    </div>
+  </section>
+
+
+  <section id="spots">
+    <h2 class="section-title">📍 Washington Places to Ride</h2>
+    <p class="section-subtitle">A starter list of BMX-friendly parks and legal off-road riding areas across Washington State. Check current rules, hours, closures, and permits before visiting.</p>
+
+    <h3 style="margin-top:35px; color:#ff6a00;">🚲 BMX & Bicycle Riding</h3>
+    <div class="grid">
+      <div class="card spot">
+        <img src="https://images.unsplash.com/photo-1544191696-15693072e0b0?auto=format&fit=crop&w=900&q=80" alt="Seattle & Puget Sound" class="spot-photo" loading="lazy">
+        <div class="icon">🚲</div>
+        <h3>Seattle & Puget Sound</h3>
+        <p>Explore local skateparks, BMX parks, and bike-friendly riding areas around the Seattle region.</p>
+      </div>
+      <div class="card spot">
+        <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=900&q=80" alt="Tacoma & South Sound" class="spot-photo" loading="lazy">
+        <div class="icon">🚲</div>
+        <h3>Tacoma & South Sound</h3>
+        <p>Find BMX and skatepark riding opportunities throughout Tacoma and the South Sound.</p>
+      </div>
+      <div class="card spot">
+        <img src="https://images.unsplash.com/photo-1529429617124-aee7c8a7a6d4?auto=format&fit=crop&w=900&q=80" alt="Spokane Area" class="spot-photo" loading="lazy">
+        <div class="icon">🚲</div>
+        <h3>Spokane Area</h3>
+        <p>Check out bicycle and skatepark riding opportunities around Spokane and eastern Washington.</p>
+      </div>
+      <div class="card spot">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Central Washington" class="spot-photo" loading="lazy">
+        <div class="icon">🚲</div>
+        <h3>Central Washington</h3>
+        <p>Discover bike-friendly parks and trails in communities across Central Washington.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:45px; color:#ff6a00;">🏍️ Dirt Bike & Off-Road Areas</h3>
+    <div class="grid">
+      <div class="card spot">
+        <img src="https://www.dnr.wa.gov/sites/default/files/styles/hero/public/2023-09/yacolt-burn.jpg" alt="Yacolt Burn State Forest" class="spot-photo" loading="lazy">
+        <div class="icon">🏍️</div>
+        <h3>Yacolt Burn State Forest</h3>
+        <p>Southwest Washington off-road riding area managed by Washington DNR.</p>
+      </div>
+      <div class="card spot">
+        <img src="https://www.dnr.wa.gov/sites/default/files/styles/hero/public/2023-09/walker-valley.jpg" alt="Walker Valley ORV Area" class="spot-photo" loading="lazy">
+        <div class="icon">🏍️</div>
+        <h3>Walker Valley ORV Area</h3>
+        <p>Near Mount Vernon, with motorcycle single-track and other off-road trails.</p>
+      </div>
+      <div class="card spot">
+        <img src="https://www.dnr.wa.gov/sites/default/files/styles/hero/public/2023-09/reiter-foothills.jpg" alt="Reiter Foothills State Forest" class="spot-photo" loading="lazy">
+        <div class="icon">🏍️</div>
+        <h3>Reiter Foothills State Forest</h3>
+        <p>Near Gold Bar, with designated motorized recreation opportunities including motorcycle trails.</p>
+      </div>
+      <div class="card spot">
+        <img src="https://www.dnr.wa.gov/sites/default/files/styles/hero/public/2023-09/elbe-hills.jpg" alt="Elbe Hills State Forest" class="spot-photo" loading="lazy">
+        <div class="icon">🏍️</div>
+        <h3>Elbe Hills State Forest</h3>
+        <p>Southwest Washington area included among Washington DNR's off-road recreation destinations.</p>
+      </div>
+      <div class="card spot">
+        <img src="https://www.dnr.wa.gov/sites/default/files/styles/hero/public/2023-09/tahuya.jpg" alt="Tahuya State Forest" class="spot-photo" loading="lazy">
+        <div class="icon">🏍️</div>
+        <h3>Tahuya State Forest</h3>
+        <p>Kitsap Peninsula off-road recreation area with designated motorized riding opportunities.</p>
+      </div>
+      <div class="card spot">
+        <img src="https://www.dnr.wa.gov/sites/default/files/styles/hero/public/2023-09/capitol.jpg" alt="Capitol State Forest" class="spot-photo" loading="lazy">
+        <div class="icon">🏍️</div>
+        <h3>Capitol State Forest</h3>
+        <p>Southwest Washington forest with designated off-road recreation opportunities.</p>
+      </div>
+      <div class="card spot">
+        <img src="https://www.dnr.wa.gov/sites/default/files/styles/hero/public/2023-09/little-pend-oreille.jpg" alt="Little Pend Oreille" class="spot-photo" loading="lazy">
+        <div class="icon">🏍️</div>
+        <h3>Little Pend Oreille</h3>
+        <p>Northeast Washington area included among DNR off-road recreation destinations.</p>
+      </div>
+      <div class="card spot">
+        <img src="https://www.dnr.wa.gov/sites/default/files/styles/hero/public/2023-09/beverly-dunes.jpg" alt="Beverly Dunes" class="spot-photo" loading="lazy">
+        <div class="icon">🏍️</div>
+        <h3>Beverly Dunes</h3>
+        <p>Central Washington off-road recreation destination managed for designated motorized use.</p>
+      </div>
+      <div class="card spot">
+        <img src="https://www.dnr.wa.gov/sites/default/files/styles/hero/public/2023-09/ahtanum.jpg" alt="Ahtanum State Forest" class="spot-photo" loading="lazy">
+        <div class="icon">🏍️</div>
+        <h3>Ahtanum State Forest</h3>
+        <p>Central Washington area included among DNR off-road recreation destinations.</p>
+      </div>
+      <div class="card spot">
+        <img src="https://parks.wa.gov/sites/default/files/2024-01/riverside-state-park.jpg" alt="Riverside State Park ORV Area" class="spot-photo" loading="lazy">
+        <div class="icon">🏍️</div>
+        <h3>Riverside State Park ORV Area</h3>
+        <p>Near Spokane, with 600 acres of special ORV terrain and a designated beginner riding area.</p>
+      </div>
+    </div>
+
+
+    <p style="color:#777; font-size:13px; line-height:1.6; margin-top:20px;">
+      Photos are displayed from public web image sources and may require an internet connection to load.
+      Some locations may use representative riding imagery rather than a dedicated site photo.
+    </p>
+
+    <div class="upload-box" style="margin-top:35px;">
+      <h3>Want more Washington spots?</h3>
+      <p>Ride Zone can keep growing into a searchable Washington riding directory with filters for BMX parks, dirt-bike areas, cities, and riding types.</p>
+    </div>
+  </section>
+
+  <section id="shops">
+    <h2 class="section-title">🏪 Bike Shops</h2>
+    <p class="section-subtitle">Find places to get parts, gear, repairs, and bikes.</p>
+    <div class="grid">
+      <div class="card shop">
+        <div class="icon">🔧</div>
+        <h3>BMX Shops</h3>
+        <p>Find BMX bikes, parts, helmets, and gear.</p>
+      </div>
+      <div class="card shop">
+        <div class="icon">🛠️</div>
+        <h3>Dirt Bike Shops</h3>
+        <p>Find dirt bikes, parts, maintenance, and riding gear.</p>
+      </div>
+      <div class="card shop">
+        <div class="icon">🪖</div>
+        <h3>Gear Shops</h3>
+        <p>Find helmets, gloves, boots, pads, and other riding equipment.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="clips" class="clips">
+    <h2 class="section-title">🎥 New Clips</h2>
+    <p class="section-subtitle">Check out the latest BMX and dirt-bike action.</p>
+    <div class="grid">
+      <div class="card clip">
+        <div class="clip-thumb">🚲</div>
+        <div class="clip-info">
+          <h3>BMX Clip</h3>
+          <p>New BMX riding clip coming soon.</p>
+        </div>
+      </div>
+      <div class="card clip">
+        <div class="clip-thumb">🏍️</div>
+        <div class="clip-info">
+          <h3>Dirt Bike Clip</h3>
+          <p>New dirt-bike riding clip coming soon.</p>
+        </div>
+      </div>
+      <div class="card clip">
+        <div class="clip-thumb">🔥</div>
+        <div class="clip-info">
+          <h3>Featured Ride</h3>
+          <p>Show off your best riding moments here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="upload" class="upload">
+    <h2 class="section-title">📸 Rider Uploads</h2>
+    <p class="section-subtitle">Got a clip? Share your riding with the Ride Zone community.</p>
+    <div class="upload-box">
+      <h3>Upload Your Clip</h3>
+      <p>This is a demo button for the local version. A real upload system can be added later.</p>
+      <a class="btn" href="#" onclick="alert('Upload features are coming soon!'); return false;">UPLOAD CLIP</a>
+    </div>
+  </section>
+</main>
+
+
+  <section style="padding-top:20px; padding-bottom:20px; background:#0b0b0b;">
+    <p style="color:#777; font-size:13px; line-height:1.6;">
+      Riding-area information is based on Washington State Parks and Washington State Department of Natural Resources recreation information.
+      Always verify current access, closures, permits, and riding rules before visiting.
+    </p>
+  </section>
+
+<footer>
+  <p>© 2026 Ride Zone • Built for BMX and dirt-bike riders.</p>
+</footer>
+
+</body>
+</html>
